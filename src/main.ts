@@ -9,6 +9,6 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   // 返回成功转换格式
   app.useGlobalInterceptors(new TransformInterceptor());
-  await app.listen(3000);
+  await app.listen(3003);
 }
 bootstrap();
