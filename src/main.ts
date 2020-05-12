@@ -5,6 +5,7 @@ import { TransformInterceptor } from './interceptor/transform.interceptor';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors()
   // 异常过滤器
   app.useGlobalFilters(new HttpExceptionFilter());
   // 返回成功转换格式

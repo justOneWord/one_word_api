@@ -7,9 +7,15 @@ import { WordService } from './word.service';
 export class WordController {
   constructor(private readonly wordService:WordService) {
   }
-  @Get()
-  index(){
-    return 123
+  @Get("all")
+  async all() {
+    return await this.wordService.getAll()
+  }
+
+  @Get("audit")
+  async audit() {
+    return await this.wordService.setAudit(3,1)
+
   }
 
   @Post()
@@ -17,6 +23,16 @@ export class WordController {
   @UsePipes(ValidationPipe)
   @HttpCode(200)
   async add(@Body() body: WordDto) {
-    await this.wordService.add(body)
+  return   await this.wordService.add(body)
+  }
+
+  @Get('more')
+  async more(){
+    return   await this.wordService.getData()
+  }
+
+  @Get('random')
+  random (){
+    return this.wordService.random()
   }
 }
