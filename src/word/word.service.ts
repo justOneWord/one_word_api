@@ -69,6 +69,7 @@ export class WordService {
       let oneWord = await this.wordReposition
         .createQueryBuilder('word')
         .select(['word.word', 'word.from', 'word.source'])
+        .where({ audit: 1 })
         .orderBy('RAND()')
         .getOne();
 
